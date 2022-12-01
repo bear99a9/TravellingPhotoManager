@@ -1,7 +1,7 @@
-import { FileUploadService } from '../file-upload.service';
+import { FileUploadService } from '../../file-upload.service';
 import { OnInit, Component, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
-import ServiceResponse from '../models/service-response.interface';
+import ServiceResponse from '../../models/service-response.interface';
 
 @Component({
 	selector: 'app-file-upload',
