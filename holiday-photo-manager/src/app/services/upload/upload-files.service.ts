@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators'
 import { environment } from '../../../environments/environment.prod';
+import ServiceResponse from '../../models/service-response.interface';
 import { BaseService } from '../base/base.service';
 
 @Injectable({
@@ -10,17 +11,14 @@ import { BaseService } from '../base/base.service';
 export class UploadFilesService extends BaseService {
 
   private apiUrl: string = environment.apiUrl;
-
-  constructor(private httpClient: HttpClient) {
-    super();
-  }
+  constructor(private httpClient: HttpClient) { super() }
 
   public upload(formData: any) {
-    debugger;
-    return this.httpClient.post(this.apiUrl + 'blog', formData).pipe(
-      map((data: any) => this.processResponse(data)),
+
+    return this.httpClient.post<ServiceResponse>(this.apiUrl + 'blog', formData, this.prepareFormOptions() ).pipe(
+      map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
       catchError(this.handleError()
-      ));
+    ));
   }
 
 }

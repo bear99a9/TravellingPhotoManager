@@ -1,5 +1,4 @@
-import { OnInit, Component, EventEmitter, Output } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
+import { OnInit, Component } from '@angular/core';
 import ServiceResponse from '../../models/service-response.interface';
 import { UploadFilesService } from 'src/app/services/upload/upload-files.service';
 
@@ -13,10 +12,8 @@ export class FileUploadComponent implements OnInit {
 	progress: number = 0;
 	message: string = '';
 	urls: string[] = [];
-	@Output() public onUploadFinished = new EventEmitter();
 
-	constructor(private http: HttpClient,
-		private uploadFilesService: UploadFilesService) { }
+	constructor(private uploadFilesService: UploadFilesService) { }
 
 	ngOnInit() {
 	}
@@ -37,12 +34,11 @@ export class FileUploadComponent implements OnInit {
 			{
 				next: (response: ServiceResponse) => {
 
+					debugger;
 					this.message = response.message;
 					this.urls = response.data;
-					this.onUploadFinished.emit(response);
-
 				},
-				error: (err: HttpErrorResponse) => console.log(err)
+				error: (err: any) => console.log(err)
 			});
 	}
 }
