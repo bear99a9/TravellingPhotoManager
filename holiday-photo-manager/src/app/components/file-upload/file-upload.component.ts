@@ -34,9 +34,8 @@ export class FileUploadComponent implements OnInit {
 			{
 				next: (response: ServiceResponse) => {
 
-					debugger;
 					this.message = response.message;
-					this.urls = response.data;
+					this.urls.push(...response.data);
 				},
 				error: (err: any) => console.log(err)
 			});

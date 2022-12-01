@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     formData.append('file', file.data);
     file.inProgress = true;
     this.uploadFilesService.upload(formData).subscribe((response: any) => {
-      debugger;
       });
   }
 
