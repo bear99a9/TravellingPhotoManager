@@ -1,5 +1,7 @@
 import { FileUploadService } from '../file-upload.service';
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, EventEmitter, Output } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
+import ServiceResponse from '../models/service-response.interface';
 
 @Component({
 	selector: 'app-file-upload',
@@ -8,36 +10,42 @@ import { OnInit, Component } from '@angular/core';
 })
 export class FileUploadComponent implements OnInit {
 
-	// Variable to store shortLink from api response
-	shortLink: string = "";
-	loading: boolean = false; // Flag variable
-	file!: File; // Variable to store file
+	progress: number = 0;
+	message: string = '';
+	urls: string[] = [];
+	@Output() public onUploadFinished = new EventEmitter();
 
-	// Inject service
-	constructor(private fileUploadService: FileUploadService) { }
+	constructor(private http: HttpClient) { }
 
-	ngOnInit(): void {
+	ngOnInit() {
 	}
 
-	// On file Select
-	onChange(event: any) {
-		this.file = event.target.files[0];
-	}
+	uploadFile = (files: any) => {
+		if (files.length === 0) {
+			return;
+		}
 
-	// OnClick of button Upload
-	onUpload() {
-		this.loading = !this.loading;
-		console.log(this.file);
-		this.fileUploadService.upload(this.file).subscribe(
-			(event: any) => {
-				if (typeof (event) === 'object') {
+		let filesToUpload: File[] = files;
+		const formData = new FormData();
 
-					// Short link via api response
-					this.shortLink = event.link;
+		Array.from(filesToUpload).map((file, index) => {
+			return formData.append('file' + index, file, file.name);
+		});
 
-					this.loading = false; // Flag variable
-				}
-			}
-		);
+		this.http.post('https://localhost:1989/api/blog', formData, { reportProgress: true, observe: 'events' })
+			.subscribe(
+				{
+					next: (event) => {
+						if (event.type === HttpEventType.UploadProgress)
+							this.progress = Math.round(100 * event.loaded / event.total!);
+						else if (event.type === HttpEventType.Response) {
+							this.message = 'Upload success.';
+							const response: ServiceResponse = event.body as ServiceResponse
+							this.urls = response.data;
+							this.onUploadFinished.emit(event.body);
+						}
+					},
+					error: (err: HttpErrorResponse) => console.log(err)
+				});
 	}
 }

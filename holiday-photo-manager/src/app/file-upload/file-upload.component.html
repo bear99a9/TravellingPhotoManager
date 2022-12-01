@@ -1,21 +1,20 @@
-<div class="text-center">
-	<input class="form-control" type="file"
-			(change)="onChange($event)">
-
-	<button (click)="onUpload()"
-		class="btn btn-success">
-		Upload
-	</button>
+<div class="row container" >
+	<div class="col-md-3">
+		<input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;"
+			multiple>
+		<button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+	</div>
+	<div class="col-md-4">
+		<span class="upload" *ngIf="progress > 0">
+			{{progress}}%
+		</span>
+		<span class="upload" *ngIf="message">
+			{{message}}
+		</span>
+	</div>
 </div>
-
-<!-- Shareable short link of uploaded file -->
-<div class="container text-center jumbotron"
-	*ngIf="shortLink">
-	<h2> Visit Here</h2>
-	<a href="{{shortLink}}">{{shortLink}}</a>
-</div>
-
-<!--Flag variable is used here-->
-<div class="container" *ngIf="loading">
-	<h3>Loading ...</h3>
+<div class="row container" >
+	<div class="col-xs-12" *ngFor="let url of urls;">
+		<img class="upload__img"src="{{url}}" alt="uploaded image">
+	</div>
 </div>

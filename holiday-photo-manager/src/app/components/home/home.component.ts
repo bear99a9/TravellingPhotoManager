@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild("fileUpload", { static: false }) fileUpload!: ElementRef;
   files: any[] = [];
+
   constructor(private uploadFilesService: UploadFilesService) { }
 
   ngOnInit(): void {
