@@ -2,7 +2,7 @@ import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map } from 'rxjs/operators';
-import { User } from 'src/app/shared/user.model';
+import { User } from 'src/app/shared/models/user.model';
 import { BaseService } from '../base/base.service';
 import { environment } from '../../../environments/environment.prod';
 import ServiceResponse from '../../models/service-response.interface';
