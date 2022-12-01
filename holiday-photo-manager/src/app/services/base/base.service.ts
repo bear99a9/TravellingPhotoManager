@@ -10,23 +10,14 @@ export class BaseService {
   constructor() { }
 
   public prepareFormOptions(): any {
-
-    let httpHeaders = new HttpHeaders();
-    httpHeaders = httpHeaders
-      .set('Authorization', 'Bearer ' )
-
-    return { headers: httpHeaders, responseType: 'json', observe: 'response' };
+    return { headers: new HttpHeaders(), responseType: 'json', observe: 'response' };
   }
 
   public prepareOptions(): any {
-
     let httpHeaders = new HttpHeaders();
-    let currentUserToken = 'wat ever';//this.getToken();
-    if (currentUserToken) {
-      httpHeaders = httpHeaders
-        .set('Content-Type', 'application/json')
-        .set('Authorization', 'Bearer ' + currentUserToken)
-    }
+
+    httpHeaders = httpHeaders
+      .set('Content-Type', 'application/json')
 
     return { headers: httpHeaders, responseType: 'json', observe: 'response' };
   }

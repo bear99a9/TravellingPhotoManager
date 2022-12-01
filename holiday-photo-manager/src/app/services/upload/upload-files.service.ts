@@ -15,7 +15,7 @@ export class UploadFilesService extends BaseService {
 
   public upload(formData: any) {
 
-    return this.httpClient.post<ServiceResponse>(this.apiUrl + 'blog', formData, this.prepareFormOptions() ).pipe(
+    return this.httpClient.post<ServiceResponse>(this.apiUrl + 'upload/upload-images', formData, this.prepareFormOptions() ).pipe(
       map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
       catchError(this.handleError()
     ));

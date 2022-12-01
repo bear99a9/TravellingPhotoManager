@@ -11,6 +11,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { HomeComponent } from './components/home/home.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { AuthInterceptor } from './shared/interceptors/auth-config.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AuthInterceptor } from './shared/interceptors/auth-config.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    ReactiveFormsModule
 
   ],
   providers: [

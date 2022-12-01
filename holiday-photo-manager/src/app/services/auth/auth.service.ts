@@ -20,7 +20,7 @@ export class AuthService extends BaseService {
   // Sign-in
   signIn(user: User) {
     return this.http
-      .post<ServiceResponse>(`${this.apiUrl}/Login`, user, this.prepareOptions()).pipe(
+      .post<ServiceResponse>(`${this.apiUrl}auth/Login`, user, this.prepareOptions()).pipe(
         map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
         catchError(
           this.handleError()

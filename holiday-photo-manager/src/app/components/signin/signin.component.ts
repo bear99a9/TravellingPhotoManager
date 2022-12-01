@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  signinForm: FormGroup;
+  constructor(
+    public fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router
+  ) {
+    this.signinForm = this.fb.group({
+      email: [''],
+      password: [''],
+    });
+  }
+  ngOnInit() {}
+  loginUser() {
+    this.authService.signIn(this.signinForm.value);
   }
 
 }
