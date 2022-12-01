@@ -1,7 +1,7 @@
-import { FileUploadService } from '../../file-upload.service';
 import { OnInit, Component, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import ServiceResponse from '../../models/service-response.interface';
+import { UploadFilesService } from 'src/app/services/upload/upload-files.service';
 
 @Component({
 	selector: 'app-file-upload',
@@ -15,7 +15,8 @@ export class FileUploadComponent implements OnInit {
 	urls: string[] = [];
 	@Output() public onUploadFinished = new EventEmitter();
 
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient,
+		private uploadFilesService: UploadFilesService) { }
 
 	ngOnInit() {
 	}
@@ -26,26 +27,22 @@ export class FileUploadComponent implements OnInit {
 		}
 
 		let filesToUpload: File[] = files;
-		const formData = new FormData();
+		let formData = new FormData();
 
 		Array.from(filesToUpload).map((file, index) => {
 			return formData.append('file' + index, file, file.name);
 		});
 
-		this.http.post('https://localhost:1989/api/blog', formData, { reportProgress: true, observe: 'events' })
-			.subscribe(
-				{
-					next: (event) => {
-						if (event.type === HttpEventType.UploadProgress)
-							this.progress = Math.round(100 * event.loaded / event.total!);
-						else if (event.type === HttpEventType.Response) {
-							this.message = 'Upload success.';
-							const response: ServiceResponse = event.body as ServiceResponse
-							this.urls = response.data;
-							this.onUploadFinished.emit(event.body);
-						}
-					},
-					error: (err: HttpErrorResponse) => console.log(err)
-				});
+		this.uploadFilesService.upload(formData).subscribe(
+			{
+				next: (response: ServiceResponse) => {
+
+					this.message = response.message;
+					this.urls = response.data;
+					this.onUploadFinished.emit(response);
+
+				},
+				error: (err: HttpErrorResponse) => console.log(err)
+			});
 	}
 }
