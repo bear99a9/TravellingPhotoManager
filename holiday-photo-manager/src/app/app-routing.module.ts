@@ -5,12 +5,14 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { HomeComponent } from './components/home/home.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { PhotoDisplayComponent } from './components/photo-display/photo-display.component';
 
 const routes: Routes = [
 { path: 'log-in', component: SigninComponent },
 { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
 {path: 'upload', component: FileUploadComponent, canActivate: [AuthGuard]},
+{path: 'all-photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
 { path: '**', redirectTo: 'log-in'}];
 
 @NgModule({

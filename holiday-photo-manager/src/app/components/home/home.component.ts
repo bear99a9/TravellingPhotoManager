@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { PhotoService } from '../../services/upload/upload-files.service';
+import { PhotoService } from '../../services/photo/photo.service';
 
 
 @Component({

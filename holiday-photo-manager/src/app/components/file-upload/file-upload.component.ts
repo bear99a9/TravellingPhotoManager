@@ -1,6 +1,6 @@
 import { OnInit, Component } from '@angular/core';
 import ServiceResponse from '../../shared/models/service-response.interface';
-import { PhotoService } from 'src/app/services/upload/upload-files.service';
+import { PhotoService } from 'src/app/services/photo/photo.service';
 
 @Component({
 	selector: 'app-file-upload',

@@ -13,6 +13,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthInterceptor } from './shared/interceptors/auth-config.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhotoDisplayComponent } from './components/photo-display/photo-display.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PhotoDisplayComponent } from './components/photo-display/photo-display.
     HomeComponent,
     AboutComponent,
     SigninComponent,
-    PhotoDisplayComponent
+    PhotoDisplayComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
