@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { UploadFilesService } from '../../services/upload/upload-files.service';
+import { PhotoService } from '../../services/upload/upload-files.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   @ViewChild("fileUpload", { static: false }) fileUpload!: ElementRef;
   files: any[] = [];
 
-  constructor(private uploadFilesService: UploadFilesService) { }
+  constructor(private uploadFilesService: PhotoService) { }
 
   ngOnInit(): void {
 

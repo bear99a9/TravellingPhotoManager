@@ -1,6 +1,6 @@
 import { OnInit, Component } from '@angular/core';
-import ServiceResponse from '../../models/service-response.interface';
-import { UploadFilesService } from 'src/app/services/upload/upload-files.service';
+import ServiceResponse from '../../shared/models/service-response.interface';
+import { PhotoService } from 'src/app/services/upload/upload-files.service';
 
 @Component({
 	selector: 'app-file-upload',
@@ -13,7 +13,7 @@ export class FileUploadComponent implements OnInit {
 	message: string = '';
 	urls: string[] = [];
 
-	constructor(private uploadFilesService: UploadFilesService) { }
+	constructor(private photoService: PhotoService) { }
 
 	ngOnInit() {
 	}
@@ -30,7 +30,7 @@ export class FileUploadComponent implements OnInit {
 			return formData.append('file' + index, file, file.name);
 		});
 
-		this.uploadFilesService.upload(formData).subscribe(
+		this.photoService.upload(formData).subscribe(
 			{
 				next: (response: ServiceResponse) => {
 

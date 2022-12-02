@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { AuthInterceptor } from './shared/interceptors/auth-config.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PhotoDisplayComponent } from './components/photo-display/photo-display.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FileUploadComponent,
     HomeComponent,
     AboutComponent,
-    SigninComponent
+    SigninComponent,
+    PhotoDisplayComponent
   ],
   imports: [
     BrowserModule,

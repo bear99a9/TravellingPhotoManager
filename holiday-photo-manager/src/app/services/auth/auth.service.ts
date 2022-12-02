@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user.model';
 import { BaseService } from '../base/base.service';
 import { environment } from '../../../environments/environment.prod';
-import ServiceResponse from '../../models/service-response.interface';
+import ServiceResponse from '../../shared/models/service-response.interface';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UserService } from '../../shared/user/user.service';
 
