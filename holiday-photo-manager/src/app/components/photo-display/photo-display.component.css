@@ -15,7 +15,6 @@
 
 .image-column {
     float: left;
-    width: 25%;
 }
 
 img {
@@ -33,6 +32,7 @@ img {
     height: 100%;
     overflow:scroll;
     background-color: #000000;
+    
 }
 
 .slide-modal-content {
@@ -40,7 +40,8 @@ img {
     margin: auto;
     padding: 0;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; 
+    height: 800px
 }
 
 .slide-modal-content .image-column {
@@ -67,6 +68,7 @@ img {
 
 .img-slides {
     display: none;
+    
 }
 
 .cursor {
@@ -101,7 +103,14 @@ img {
 }
 
 img {
+    width: 350px;
+    height: 400px;
     margin-bottom: -4px;
+}
+
+img:active{
+    width: 1000px;
+    height: 900px
 }
 
 .images {

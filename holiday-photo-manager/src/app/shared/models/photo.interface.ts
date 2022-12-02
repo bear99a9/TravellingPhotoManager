@@ -4,4 +4,7 @@ export default interface photoInterface {
     insertedDateTime: Date;
     permissionToView: boolean;
     insertedByUserId: number;
+    photoThumb: string;
+    photoSRC: string;
+    photoName: string;
 }

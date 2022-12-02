@@ -31,7 +31,6 @@ export class PhotoDisplayComponent implements OnInit {
       .subscribe({
         next: (response: ServiceResponse) =>{
           this.images.push(...response.data);
-          debugger;
         }
       });
   }
