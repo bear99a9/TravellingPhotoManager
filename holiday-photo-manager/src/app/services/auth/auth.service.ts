@@ -6,16 +6,20 @@ import { User } from 'src/app/shared/models/user.model';
 import { BaseService } from '../base/base.service';
 import { environment } from '../../../environments/environment.prod';
 import ServiceResponse from '../../models/service-response.interface';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { UserService } from '../../shared/user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService extends BaseService {
   private apiUrl: string = environment.apiUrl;
+  private helper = new JwtHelperService();
 
   currentUser = {};
   constructor(private http: HttpClient,
-    public router: Router) { super() }
+    public router: Router,
+    private userService: UserService) { super() }
 
   // Sign-in
   signIn(user: User) {
@@ -27,6 +31,17 @@ export class AuthService extends BaseService {
         ))
       .subscribe((res: ServiceResponse) => {
         localStorage.setItem('access_token', res.data);
+        const decodeJWT = this.helper.decodeToken(res.data);
+        const user : User = {
+          name: decodeJWT.name,
+          role: decodeJWT.role,
+          email: decodeJWT.email,
+          id: 0,
+          password: ''
+        }
+
+        this.userService.setUserHash(user);
+
         this.router.navigate(['home/']);
       });
   }
@@ -41,7 +56,7 @@ export class AuthService extends BaseService {
   }
 
   doLogout() {
-    let removeToken = localStorage.removeItem('access_token');
+    let removeToken = localStorage.clear();
     if (removeToken == null) {
       this.router.navigate(['log-in']);
     }

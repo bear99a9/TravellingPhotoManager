@@ -12,37 +12,26 @@ export class UserService {
 
   public setUserHash(user: any): void {
     let hash = this.encryptData(user);
-    localStorage.set('h', hash);
+    localStorage.setItem('h', hash);
   }
 
   public getUserHash() {
     const hashedUser = localStorage.getItem('h');
-
-    let user = this.decryptData(hashedUser);
-
-    return user;
+    return this.decryptData(hashedUser);
   }
 
   private encryptData(data: any) {
-
-    try {
       return CryptoJS.AES.encrypt(JSON.stringify(data), environment.hashSalt).toString();
-    } catch (e) {
-      console.log(e);
-    }
   }
 
   private decryptData(data: any) {
 
-    try {
       const bytes = CryptoJS.AES.decrypt(data, environment.hashSalt);
       if (bytes.toString()) {
         return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
       }
+
       return data;
-    } catch (e) {
-      console.log(e);
-    }
   }
 
 }
