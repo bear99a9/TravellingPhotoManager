@@ -36,7 +36,7 @@ export class AuthService extends BaseService {
           name: decodeJWT.name,
           role: decodeJWT.role,
           email: decodeJWT.email,
-          id: 0,
+          id: +decodeJWT.id,
           password: ''
         }
 
