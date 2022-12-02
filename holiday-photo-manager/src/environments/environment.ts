@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:1989/api/'
+  apiUrl: 'https://localhost:1989/api/',
+  hashSalt:" SFsqDXAC82WRDQwfqwfC2E2"
 };
 
 /*
