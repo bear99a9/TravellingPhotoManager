@@ -22,7 +22,7 @@ export class PhotoService extends BaseService {
   }
 
   public GetPhotos(){
-    return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-all-photos', this.prepareFormOptions() ).pipe(
+    return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-all-images', this.prepareFormOptions() ).pipe(
       map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
       catchError(this.handleError()
     ));

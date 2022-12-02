@@ -8,8 +8,9 @@ import { PhotoService } from '../../services/upload/upload-files.service';
 })
 export class PhotoDisplayComponent implements OnInit {
 
-  
   constructor(private photoService: PhotoService) { }
+
+  
 
   ngOnInit(): void {
 
