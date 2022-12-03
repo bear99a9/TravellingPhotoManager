@@ -1,6 +1,7 @@
 .image-row {
     display: flex;
     flex-wrap: wrap;
+    background-color: #121420;
 }
 
 .image-row>.image-column {
@@ -19,6 +20,7 @@
 
 img {
     width: 100%;
+    filter: brightness(.8) contrast(1.2);
 }
 
 .slide-modal {
@@ -30,17 +32,20 @@ img {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow:scroll;
-    background-color: #000000;
-    
+    overflow: scroll;
+    background-color: #121420;
+
 }
 
 .slide-modal-content {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
     position: relative;
     margin: auto;
     padding: 0;
     width: 100%;
-    max-width: 1200px; 
+    max-width: 1200px;
     height: 800px
 }
 
@@ -68,22 +73,28 @@ img {
 
 .img-slides {
     display: none;
-    
+
 }
 
+.img-slides:focus-visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .cursor {
     cursor: pointer;
 }
 
 .prev,
 .next {
+    z-index: 1000;
     cursor: pointer;
     position: absolute;
     top: 35%;
     width: auto;
     padding: 18px;
     margin-top: -50px;
-    color:  rgb(244, 6, 6) !important;
+    color: rgb(244, 6, 6) !important;
     font-weight: bold;
     font-size: 20px;
     transition: 0.8s ease;
@@ -102,15 +113,20 @@ img {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-img {
-    width: 350px;
-    height: 400px;
+img.tn {
+    width: 200px;
+    height: 160px;
     margin-bottom: -4px;
 }
 
-img:active{
-    width: 1000px;
-    height: 900px
+img.hover-shadow {
+    transition: 0.3s;
+}
+
+img.large {
+    max-width: 100%;
+    height: auto;
+    max-width: 800px;
 }
 
 .images {
@@ -122,10 +138,14 @@ img:active{
     opacity: 1;
 }
 
-img.hover-shadow {
-    transition: 0.3s;
-}
 
 .hover-shadow:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgb(253, 253, 253), 0 6px 20px 0 rgb(238, 236, 236);
+}
+
+.tn {
+    margin: 6px 6px;
+    border: 4px solid #eee;
+    box-shadow: #555 1px 1px 8px 1px;
+    cursor: pointer
 }

@@ -5,16 +5,15 @@
 		<button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
 	</div>
 	<div class="col-md-4">
-		<span class="upload" *ngIf="progress > 0">
-			{{progress}}%
-		</span>
 		<span class="upload" *ngIf="message">
 			{{message}}
 		</span>
 	</div>
 </div>
-<div class="row container" >
-	<div class="col-xs-12" *ngFor="let url of urls;">
-		<img class="upload__img"src="{{url}}" alt="uploaded image">
+
+	<div class="image-row">
+		<div class="image-column" *ngFor="let image of urls; let i = index">
+			<img src="{{image}}" class="hover-shadow tn">
+		</div>
 	</div>
-</div>
+	
