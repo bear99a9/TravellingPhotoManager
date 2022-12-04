@@ -1,12 +1,8 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import ServiceResponse from 'src/app/shared/models/service-response.interface';
-
 import { PhotoService } from '../../services/photo/photo.service';
 import photoInterface from '../../shared/models/photo.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-photo-display',
@@ -18,22 +14,38 @@ export class PhotoDisplayComponent implements OnInit {
   images: photoInterface[] = [];
 
 
-  constructor(private photoService: PhotoService) { }
+  constructor(private photoService: PhotoService,
+    private router: Router) { }
 
   slideIndex = 0;
 
   ngOnInit(): void {
-    this.loadImages();
+    if (this.router.url.includes('manage')) {
+      this.loadAllImages();
+    }
+    else{
+      this.loadFeaturedImages();
+    }
   }
 
-  loadImages(): void {
-    this.photoService.GetPhotos()
+  loadAllImages(): void {
+    this.photoService.FetchAllPhotos()
       .subscribe({
-        next: (response: ServiceResponse) =>{
+        next: (response: ServiceResponse) => {
           this.images.push(...response.data);
         }
       });
   }
+
+  loadFeaturedImages(): void {
+    this.photoService.FetchFeaturedPhotos()
+      .subscribe({
+        next: (response: ServiceResponse) => {
+          this.images.push(...response.data);
+        }
+      });
+  }
+
   openModal() {
     document.getElementById('imgModal')!.style.display = "block";
   }

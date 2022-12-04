@@ -21,12 +21,17 @@ export class PhotoService extends BaseService {
     ));
   }
 
-  public GetPhotos(){
+  public FetchAllPhotos(){
     return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-all-images', this.prepareFormOptions() ).pipe(
       map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
       catchError(this.handleError()
     ));
-
   }
 
+  public FetchFeaturedPhotos(){
+    return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-featured-images', this.prepareFormOptions() ).pipe(
+      map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
+      catchError(this.handleError()
+    ));
+  }
 }
