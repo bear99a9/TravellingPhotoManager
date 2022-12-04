@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="l-header__logo">
         <img src="..\..\assets\logo1.webp" alt="Rosanna & Sean">
     </div> 
@@ -12,11 +12,14 @@
             <li class="nav-item">
                 <button mat-button routerLink="/home">Home</button>
             </li>
-            <li class="nav-item">
+            <li *ngIf="isAdmin()" class="nav-item">
                 <button mat-button routerLink="/upload">Upload</button>
             </li>
+            <li *ngIf="isAdmin()" class="nav-item">
+                <button mat-button routerLink="/manage-photos">Manage Photos</button>
+            </li>
             <li class="nav-item">
-                <button mat-button routerLink="/all-photos">All photos</button>
+                <button mat-button routerLink="/photos">Photos</button>
             </li>
             <li class="nav-item">
                 <button mat-button *ngIf="showLogout()" (click)="logout()">Logout</button>

@@ -12,7 +12,8 @@ const routes: Routes = [
 { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
 {path: 'upload', component: FileUploadComponent, canActivate: [AuthGuard]},
-{path: 'all-photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
+{path: 'manage-photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
+{path: 'photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
 { path: '**', redirectTo: 'log-in'}];
 
 @NgModule({

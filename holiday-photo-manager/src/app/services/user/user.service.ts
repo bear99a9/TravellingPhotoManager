@@ -19,7 +19,11 @@ export class UserService {
     const hashedUser = localStorage.getItem('h');
     return this.decryptData(hashedUser);
   }
-
+  public isAdmin(){
+    const user = this.getUserHash();
+    return user.role === 'Admin';
+  }
+  
   private encryptData(data: any) {
       return CryptoJS.AES.encrypt(JSON.stringify(data), environment.hashSalt).toString();
   }

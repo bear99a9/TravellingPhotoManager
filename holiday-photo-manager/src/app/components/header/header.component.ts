@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +26,10 @@ export class HeaderComponent implements OnInit {
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+
+  isAdmin(){
+    return this.userService.isAdmin();
   }
 
 }
