@@ -1,14 +1,3 @@
-<mat-toolbar color="primary">
-    <h1>
-        Image Upload
-    </h1>
-    <button mat-button routerLink="/home">Home</button>
-    <button mat-button routerLink="/about">About</button>
-    <button mat-button routerLink="/upload">Upload</button>
-    <button mat-button routerLink="/all-photos">All photos</button>
-
-    <button mat-button *ngIf="showLogout()" (click)="logout()">Logout</button>
-</mat-toolbar>
-
+<app-header></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
