@@ -1,0 +1,22 @@
+.l-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #d6d5d5;
+    background-color: #ffffff;
+    z-index: 1;
+    gap: 10px;
+}
+
+.l-header__user-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.l-header__user-info {
+    margin-right: 15px;
+}
+

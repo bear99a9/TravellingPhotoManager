@@ -13,6 +13,11 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthInterceptor } from './shared/interceptors/auth-config.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhotoDisplayComponent } from './components/photo-display/photo-display.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TitleComponent } from './components/header/title/title.component';
+import { NavigationComponent } from './components/header/navigation/navigation.component';
+import { UserDetailsComponent } from './components/header/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import { PhotoDisplayComponent } from './components/photo-display/photo-display.
     AboutComponent,
     SigninComponent,
     PhotoDisplayComponent,
+    FooterComponent,
+    HeaderComponent,
+    TitleComponent,
+    NavigationComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
