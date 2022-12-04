@@ -1,10 +1,10 @@
 <div class="row container" >
-	<div class="col-md-3">
+	<div class="col-xs-12">
 		<input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;"
 			multiple>
 		<button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
 	</div>
-	<div class="col-md-4">
+	<div class="col-xs-12">
 		<span class="upload" *ngIf="message">
 			{{message}}
 		</span>
