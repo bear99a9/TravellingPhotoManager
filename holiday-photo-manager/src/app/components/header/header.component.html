@@ -1,16 +1,27 @@
-<header class="l-header">
-    <div class="l-header__title-nav">
-        <div class="l-header__logo">
-            <img src="..\..\assets\logo1.webp" alt="Rosanna & Sean">
-        </div>    
-        <div class="l-header__nav">
-            <app-navigation></app-navigation>
-        </div>
-    </div>
-    <div class="l-header__user-container">
-        <div class="l-header__user-info">
-            <app-user-details></app-user-details>
-        </div>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="l-header__logo">
+        <img src="..\..\assets\logo1.webp" alt="Rosanna & Sean">
+    </div> 
 
-</header>
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <button mat-button routerLink="/home">Home</button>
+            </li>
+            <li class="nav-item">
+                <button mat-button routerLink="/upload">Upload</button>
+            </li>
+            <li class="nav-item">
+                <button mat-button routerLink="/all-photos">All photos</button>
+            </li>
+            <li class="nav-item">
+                <button mat-button *ngIf="showLogout()" (click)="logout()">Logout</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
