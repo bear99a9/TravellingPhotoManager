@@ -21,6 +21,9 @@
             <li class="nav-item">
                 <button mat-button routerLink="/photos">Photos</button>
             </li>
+            <li *ngIf="isAdmin()" class="nav-item">
+                <button mat-button routerLink="/swagger">Swagger</button>
+            </li>
             <li class="nav-item">
                 <button mat-button *ngIf="showLogout()" (click)="logout()">Logout</button>
             </li>
