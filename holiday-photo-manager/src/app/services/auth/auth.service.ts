@@ -7,7 +7,7 @@ import { BaseService } from '../base/base.service';
 import { environment } from '../../../environments/environment.prod';
 import ServiceResponse from '../../shared/models/service-response.interface';
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { UserService } from '../../shared/user/user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
