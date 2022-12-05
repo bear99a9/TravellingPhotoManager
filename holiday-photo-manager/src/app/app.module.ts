@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ApiDocumentationComponent } from './components/api-documentation/api-documentation.component';
 import { UploadFilesComponent } from './components/file-upload/upload-files/upload-files.component';
 import { UploadFeaturedFilesComponent } from './components/file-upload/upload-featured-files/upload-featured-files.component';
+import { ErrorModalComponent } from './shared/error/error-modal/error-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UploadFeaturedFilesComponent } from './components/file-upload/upload-fe
     HeaderComponent,
     ApiDocumentationComponent,
     UploadFilesComponent,
-    UploadFeaturedFilesComponent
+    UploadFeaturedFilesComponent,
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 import ServiceResponse from 'src/app/shared/models/service-response.interface';
+import { ErrorModalService } from '../../../services/error/error-modal.service';
 
 @Component({
 	selector: 'app-upload-files',
@@ -12,7 +13,8 @@ export class UploadFilesComponent implements OnInit {
 	message: string = '';
 	urls: string[] = [];
 
-	constructor(private photoService: PhotoService) { }
+	constructor(private photoService: PhotoService,
+		private errorModalService: ErrorModalService) { }
 
 	ngOnInit() {
 	}
@@ -36,7 +38,12 @@ export class UploadFilesComponent implements OnInit {
 					this.message = response.message;
 					this.urls.push(...response.data);
 				},
-				error: (err: any) => console.log(err)
+				error: (error: any) => {
+					this.errorModalService.show(error.message, error);
+				},
+				complete() {
+
+				},
 			});
 
 	}

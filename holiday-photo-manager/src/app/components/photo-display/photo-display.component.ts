@@ -3,6 +3,7 @@ import ServiceResponse from 'src/app/shared/models/service-response.interface';
 import { PhotoService } from '../../services/photo/photo.service';
 import photoInterface from '../../shared/models/photo.interface';
 import { Router } from '@angular/router';
+import { ErrorModalService } from 'src/app/services/error/error-modal.service';
 
 @Component({
   selector: 'app-photo-display',
@@ -15,7 +16,8 @@ export class PhotoDisplayComponent implements OnInit {
 
 
   constructor(private photoService: PhotoService,
-    private router: Router) { }
+    private router: Router,
+    private errorModalService: ErrorModalService ) { }
 
   slideIndex = 0;
 
@@ -42,7 +44,13 @@ export class PhotoDisplayComponent implements OnInit {
       .subscribe({
         next: (response: ServiceResponse) => {
           this.images.push(...response.data);
-        }
+        },
+        error: (error: any) => {
+          this.errorModalService.show(error.message, error);
+        },
+        complete() {
+  
+        },  
       });
   }
 

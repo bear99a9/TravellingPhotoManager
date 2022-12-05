@@ -1,0 +1,60 @@
+.btn {
+    color: #167bff;
+    border-color: #167bff;
+    background-color: #fff;
+}
+
+.btn:hover {
+    filter: brightness(85%);
+}
+
+.modal-type-container {
+    max-width: 100px;
+}
+
+.error-modal {
+    background-color: #d71b00 !important;
+}
+.validation-error-modal {
+    background-color: #fec200 !important;
+}
+.info-error-modal {
+    background-color: var(--primary) !important;
+    opacity: 0.15;
+}
+
+.modal-message-container {
+    padding: 40px 10px 0 25px;
+    margin: 0;
+}
+
+.modal-button-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+
+.icon-container {
+    position: absolute;
+    margin-top: 20px;
+    height: 70px;
+    width: 70px;
+    top: 0;
+    left: 15px;
+}
+.white-icon {
+    color: #fff;
+}
+
+.modal-message-title{
+    font-size: 24px; 
+    text-align: center;
+}
+
+.modal-message-body{
+    font-size: 16px;
+    text-align: center;
+}

@@ -1,0 +1,38 @@
+<p>error-modal works!</p><mat-dialog-content class="">
+    <div class="container-fluid content-container">
+
+        <div class="">
+
+            <div class="modal-type-container">
+                <div class=""
+                [ngClass]="{'error-modal': !data.isValidationError, 'validation-error-modal': data.isValidationError, 'info-error-modal': data.isAuthFailedInfoError}"></div>
+                <div class="icon-container">
+                    <!-- <div [ngClass]="{'error-modal-icon': !data.isValidationError, 'validation-modal-icon': data.isValidationError, 'info-modal-icon': data.isAuthFailedInfoError}"></div> -->
+                    
+                    <i class="white-icon" *ngIf="!data.isValidationError && !data.isAuthFailedInfoError"></i>
+                    <i class="" *ngIf="data.isAuthFailedInfoError"></i>
+                    <i class="white-icon" *ngIf="data.isValidationError"></i>
+                </div>
+            </div>
+
+            <div class="modal-message-container">
+                <p class="modal-message-title">{{ data.title != '' ? data.title : data.isValidationError ? 'Whoops...' : 'An error has occurred' }}</p>
+                <br/>
+                <p class="modal-message-body" *ngIf="!data.isAuthFailedInfoError">{{data.errorMessage}}</p>
+                <p class="modal-message-body" *ngIf="data.isAuthFailedInfoError">You currently do not have permission to enter the application.</p>
+                <p class="modal-message-body" *ngIf="data.isAuthFailedInfoError">Please return back to your learning platform to create a new access link.</p>
+            
+                <div class="modal-button-container">
+                    <button mat-button [mat-dialog-close]="false" class="btn btn-hover"
+                    
+                        tabindex="-1">Dismiss</button>
+                        <!-- [ngClass]="{'btn-outline-error': !data.isValidationError, 'btn-outline-validation': data.isValidationError, 'btn-outline-info-error': data.isAuthFailedInfoError}" -->
+                </div>
+                    
+            </div>
+
+        </div>
+
+    </div>
+
+</mat-dialog-content>
