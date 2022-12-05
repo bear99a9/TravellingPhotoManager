@@ -1,4 +1,4 @@
-<p>error-modal works!</p><mat-dialog-content class="">
+<mat-dialog-content>
     <div class="container-fluid content-container">
 
         <div class="">
@@ -23,7 +23,7 @@
                 <p class="modal-message-body" *ngIf="data.isAuthFailedInfoError">Please return back to your learning platform to create a new access link.</p>
             
                 <div class="modal-button-container">
-                    <button mat-button [mat-dialog-close]="false" class="btn btn-hover"
+                    <button [mat-dialog-close]="false" class="btn btn-danger"
                     
                         tabindex="-1">Dismiss</button>
                         <!-- [ngClass]="{'btn-outline-error': !data.isValidationError, 'btn-outline-validation': data.isValidationError, 'btn-outline-info-error': data.isAuthFailedInfoError}" -->

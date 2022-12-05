@@ -1,13 +1,3 @@
-.btn {
-    color: #167bff;
-    border-color: #167bff;
-    background-color: #fff;
-}
-
-.btn:hover {
-    filter: brightness(85%);
-}
-
 .modal-type-container {
     max-width: 100px;
 }

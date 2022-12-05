@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment.prod';
 import ServiceResponse from '../../shared/models/service-response.interface';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UserService } from '../user/user.service';
+import { ErrorModalService } from '../error/error-modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService extends BaseService {
   currentUser = {};
   constructor(private http: HttpClient,
     public router: Router,
-    private userService: UserService) { super() }
+    private userService: UserService,
+    private errorModalService: ErrorModalService ) { super() }
 
   // Sign-in
   signIn(user: User) {
@@ -29,20 +31,26 @@ export class AuthService extends BaseService {
         catchError(
           this.handleError()
         ))
-      .subscribe((res: ServiceResponse) => {
-        localStorage.setItem('access_token', res.data);
-        const decodeJWT = this.helper.decodeToken(res.data);
-        const user : User = {
-          name: decodeJWT.name,
-          role: decodeJWT.role,
-          email: decodeJWT.email,
-          id: +decodeJWT.id,
-          password: ''
-        }
+      .subscribe({
+        next: (res: ServiceResponse) => {
+          localStorage.setItem('access_token', res.data);
+          const decodeJWT = this.helper.decodeToken(res.data);
+          const user: User = {
+            name: decodeJWT.name,
+            role: decodeJWT.role,
+            email: decodeJWT.email,
+            id: +decodeJWT.id,
+            password: ''
+          }
 
-        this.userService.setUserHash(user);
+          this.userService.setUserHash(user);
 
-        this.router.navigate(['home/']);
+          this.router.navigate(['home/']);
+        },
+        error: (error: any) => {
+          this.errorModalService.show(error.message, error);
+        },
+        complete() { }
       });
   }
 

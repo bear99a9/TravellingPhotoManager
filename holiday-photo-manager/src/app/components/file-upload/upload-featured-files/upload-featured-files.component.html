@@ -2,7 +2,7 @@
 	<div class="col-xs-12 container">
 		<input type="file" #file placeholder="Choose featured file" (change)="uploadFeaturedFile(file.files, 2)" style="display:none;"
 			multiple>
-		<button type="button" class="btn btn-success" (click)="file.click()">Upload Featured</button>
+		<button type="button" class="btn btn-primary" (click)="file.click()">Upload Featured</button>
 	</div>
 	<div class="col-xs-12 container">
 		<span class="upload" *ngIf="message">
