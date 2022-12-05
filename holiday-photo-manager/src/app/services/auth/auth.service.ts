@@ -47,8 +47,9 @@ export class AuthService extends BaseService {
           }
 
           this.userService.setUserHash(user);
-          this.loggedIn.next(true);
           this.router.navigate(['home/']);
+          debugger
+          this.loggedIn.next(true);
         },
         error: (error: any) => {
           this.errorModalService.show(error.message, error);
