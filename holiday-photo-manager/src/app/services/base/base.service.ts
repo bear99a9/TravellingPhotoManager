@@ -61,9 +61,15 @@ export class BaseService {
           status: error.status,
           isValidationError: true
         };
+      }else if (error.status === 400) {
+        throw {
+          message: "Please enter the correct email and password combination",
+          status: error.status,
+          isValidationError: true
+        };
       } else {
         throw {
-          message: "Oops, an error has occurred. If the error persists, please contact your local branch.",
+          message: "Oops, an error has occurred. Looks like I did not do a good job there!",
           status: error.status
         };
       }

@@ -9,6 +9,7 @@ import ServiceResponse from '../../shared/models/service-response.interface';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UserService } from '../user/user.service';
 import { ErrorModalService } from '../error/error-modal.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ import { ErrorModalService } from '../error/error-modal.service';
 export class AuthService extends BaseService {
   private apiUrl: string = environment.apiUrl;
   private helper = new JwtHelperService();
+
+  loggedIn = new Subject<boolean>();
 
   currentUser = {};
   constructor(private http: HttpClient,
@@ -44,7 +47,7 @@ export class AuthService extends BaseService {
           }
 
           this.userService.setUserHash(user);
-
+          this.loggedIn.next(true);
           this.router.navigate(['home/']);
         },
         error: (error: any) => {
@@ -66,6 +69,7 @@ export class AuthService extends BaseService {
   doLogout() {
     let removeToken = localStorage.clear();
     if (removeToken == null) {
+      this.loggedIn.next(false);
       this.router.navigate(['log-in']);
     }
   }
