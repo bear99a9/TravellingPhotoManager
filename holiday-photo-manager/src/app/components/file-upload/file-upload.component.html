@@ -1,19 +1,12 @@
-<div class="row container" >
-	<div class="col-xs-12">
-		<input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;"
-			multiple>
-		<button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+<div class="row">
+	<div class="col-xs-12 container">
+        <app-upload-files></app-upload-files>
 	</div>
-	<div class="col-xs-12">
-		<span class="upload" *ngIf="message">
-			{{message}}
-		</span>
+	<div class="col-xs-12 container">
+        <app-upload-featured-files></app-upload-featured-files>
 	</div>
 </div>
 
-	<div class="image-row">
-		<div class="image-column" *ngFor="let image of urls; let i = index">
-			<img src="{{image}}" class="hover-shadow tn">
-		</div>
-	</div>
-	
+
+
+

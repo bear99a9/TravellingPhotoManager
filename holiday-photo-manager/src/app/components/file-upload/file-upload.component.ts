@@ -12,13 +12,14 @@ export class FileUploadComponent implements OnInit {
 	progress: number = 0;
 	message: string = '';
 	urls: string[] = [];
+	featuredUrls: string[] = [];
 
 	constructor(private photoService: PhotoService) { }
 
 	ngOnInit() {
 	}
 
-	uploadFile = (files: any) => {
+	uploadFile = (files: any, type: number) => {
 		if (files.length === 0) {
 			return;
 		}
@@ -30,7 +31,7 @@ export class FileUploadComponent implements OnInit {
 			return formData.append('file' + index, file, file.name);
 		});
 
-		this.photoService.upload(formData).subscribe(
+		this.photoService.upload(formData, type).subscribe(
 			{
 				next: (response: ServiceResponse) => {
 
@@ -39,5 +40,33 @@ export class FileUploadComponent implements OnInit {
 				},
 				error: (err: any) => console.log(err)
 			});
+
 	}
+
+	uploadFeaturedFile = (files: any, type: number) => {
+		if (files.length === 0) {
+			return;
+		}
+
+		debugger;
+
+		let filesToUpload: File[] = files;
+		let formData = new FormData();
+
+		Array.from(filesToUpload).map((file, index) => {
+			return formData.append('file' + index, file, file.name);
+		});
+
+		this.photoService.upload(formData, type).subscribe(
+			{
+				next: (response: ServiceResponse) => {
+
+					this.message = response.message;
+					this.featuredUrls.push(...response.data);
+				},
+				error: (err: any) => console.log(err)
+			});
+
+	}
+
 }

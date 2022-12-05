@@ -15,6 +15,8 @@ import { PhotoDisplayComponent } from './components/photo-display/photo-display.
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ApiDocumentationComponent } from './components/api-documentation/api-documentation.component';
+import { UploadFilesComponent } from './components/file-upload/upload-files/upload-files.component';
+import { UploadFeaturedFilesComponent } from './components/file-upload/upload-featured-files/upload-featured-files.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ApiDocumentationComponent } from './components/api-documentation/api-do
     FooterComponent,
     HeaderComponent,
     ApiDocumentationComponent,
+    UploadFilesComponent,
+    UploadFeaturedFilesComponent
   ],
   imports: [
     BrowserModule,

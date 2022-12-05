@@ -13,9 +13,16 @@ export class PhotoService extends BaseService {
   private apiUrl: string = environment.apiUrl;
   constructor(private httpClient: HttpClient) { super() }
 
-  public upload(formData: any) {
+  public upload(formData: any, type: number) {
+    let urlEndPoint = '';
+    if (type === 1) {
+      urlEndPoint = 'photo/upload-images';
+    } else {
+      urlEndPoint = 'photo/upload-featured-images';
+    }
 
-    return this.httpClient.post<ServiceResponse>(this.apiUrl + 'photo/upload-images', formData, this.prepareFormOptions() ).pipe(
+    debugger;
+    return this.httpClient.post<ServiceResponse>(this.apiUrl + urlEndPoint, formData, this.prepareFormOptions() ).pipe(
       map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
       catchError(this.handleError()
     ));

@@ -19,23 +19,24 @@ export class UserService {
     const hashedUser = localStorage.getItem('h');
     return this.decryptData(hashedUser);
   }
-  public isAdmin(){
+  public isAdmin() {
     const user = this.getUserHash();
     return user.role === 'Admin';
   }
-  
+
   private encryptData(data: any) {
-      return CryptoJS.AES.encrypt(JSON.stringify(data), environment.hashSalt).toString();
+    return CryptoJS.AES.encrypt(JSON.stringify(data), environment.hashSalt).toString();
   }
 
   private decryptData(data: any) {
 
-      const bytes = CryptoJS.AES.decrypt(data, environment.hashSalt);
-      if (bytes.toString()) {
-        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-      }
+    const bytes = CryptoJS.AES.decrypt(data, environment.hashSalt);
 
-      return data;
+    if (bytes.toString()) {
+      return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    }
+
+    return data;
   }
 
 }
