@@ -20,6 +20,7 @@ import { UploadFeaturedFilesComponent } from './components/file-upload/upload-fe
 import { ErrorModalComponent } from './shared/error/error-modal/error-modal.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleMapsModule
 
   ],
   providers: [
