@@ -15,13 +15,13 @@ export class PhotoService extends BaseService {
 
   public upload(formData: any, type: number) {
     let urlEndPoint = '';
+    
     if (type === 1) {
       urlEndPoint = 'photo/upload-images';
     } else {
       urlEndPoint = 'photo/upload-featured-images';
     }
 
-    debugger;
     return this.httpClient.post<ServiceResponse>(this.apiUrl + urlEndPoint, formData, this.prepareFormOptions() ).pipe(
       map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
       catchError(this.handleError()

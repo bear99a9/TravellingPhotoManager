@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { HomeComponent } from './components/home/home.component';
@@ -18,6 +18,8 @@ import { ApiDocumentationComponent } from './components/api-documentation/api-do
 import { UploadFilesComponent } from './components/file-upload/upload-files/upload-files.component';
 import { UploadFeaturedFilesComponent } from './components/file-upload/upload-featured-files/upload-featured-files.component';
 import { ErrorModalComponent } from './shared/error/error-modal/error-modal.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ErrorModalComponent } from './shared/error/error-modal/error-modal.comp
     ApiDocumentationComponent,
     UploadFilesComponent,
     UploadFeaturedFilesComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,11 @@ import { ErrorModalComponent } from './shared/error/error-modal/error-modal.comp
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true
     }
   ],

@@ -24,8 +24,6 @@ export class UploadFeaturedFilesComponent implements OnInit {
 			return;
 		}
 
-		debugger;
-
 		let filesToUpload: File[] = files;
 		let formData = new FormData();
 
