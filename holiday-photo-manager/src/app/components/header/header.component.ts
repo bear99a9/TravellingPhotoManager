@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     this.authService.doLogout();
   }
 
-  showLogout(){
+  showNav(){
     return this.authService.isLoggedIn;
   }
 
