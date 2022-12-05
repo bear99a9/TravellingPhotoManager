@@ -24,7 +24,6 @@
     "crypto-js": "^4.1.1",
     "lightgallery": "^2.7.0",
     "rxjs": "~6.6.0",
-    "swagger-ui": "^4.15.5",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },

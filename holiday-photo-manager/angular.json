@@ -98,8 +98,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/swagger-ui/dist/swagger-ui.css"
+              "src/styles.css"
             ],
             "scripts": []
           }
