@@ -6,9 +6,6 @@ export const environment = {
   production: false,
   apiUrl: 'https://localhost:1989/api/',
   //apiUrl: 'https://seanprofileapi.azurewebsites.net/api/',
-  hashSalt:" SFsqDXAC82WRDQwfqwfC2E2",
-  apiNinjaKey: '4Mq59uleC68pIiJvzTO0jg==Je2zsAcvjE8nn0hn',
-  k:  'AIzaSyDA8ciqXlmayPEandB2sjCMuRssuVZ8uTY'
 };
 
 /*
