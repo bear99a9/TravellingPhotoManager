@@ -6,9 +6,10 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { PhotoDisplayComponent } from './components/photo-display/photo-display.component';
 import { ApiDocumentationComponent } from './components/api-documentation/api-documentation.component';
+import { LoginGuard } from './shared/guards/login.guard';
 
 const routes: Routes = [
-{ path: 'log-in', component: SigninComponent },
+{ path: 'log-in', component: SigninComponent, canActivate: [LoginGuard] },
 { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 {path: 'upload', component: FileUploadComponent, canActivate: [AuthGuard]},
 {path: 'manage-photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
