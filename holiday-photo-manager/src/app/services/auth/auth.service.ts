@@ -54,7 +54,8 @@ export class AuthService extends BaseService {
         error: (error: any) => {
           this.errorModalService.show(error.message, error);
         },
-        complete() { }
+        complete() {
+        }
       });
   }
 

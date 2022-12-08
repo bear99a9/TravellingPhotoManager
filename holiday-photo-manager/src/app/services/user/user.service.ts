@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
+import { User } from 'src/app/shared/models/user.model';
 import { environment } from '../../../environments/environment.prod';
 
 
@@ -17,7 +18,13 @@ export class UserService {
 
   public getUserHash() {
     const hashedUser = localStorage.getItem('h');
-    return this.decryptData(hashedUser);
+    if (hashedUser) {
+      return this.decryptData(hashedUser);
+    }
+    else{
+      const user: User  = {role: 'Guest', id: 0, name: '', email: '', password: '' };
+      return user;
+    }
   }
   public isAdmin() {
     const user = this.getUserHash();

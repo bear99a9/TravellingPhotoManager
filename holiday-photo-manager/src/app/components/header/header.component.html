@@ -8,7 +8,7 @@
     </button>
 
     <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
-        <ul class="navbar-nav mr-auto">
+        <ul *ngIf="isLoggedIn" class="navbar-nav mr-auto">
             <li class="nav-item">
                 <button mat-button routerLink="/home">Home</button>
             </li>
@@ -25,7 +25,7 @@
                 <button mat-button routerLink="/swagger">Swagger</button>
             </li>
             <li class="nav-item">
-                <button mat-button *ngIf="showLogout()" (click)="logout()">Logout</button>
+                <button mat-button (click)="logout()">Logout</button>
             </li>
         </ul>
     </div>
