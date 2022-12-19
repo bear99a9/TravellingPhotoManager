@@ -4,30 +4,29 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-password-reset-request',
+  templateUrl: './password-reset-request.component.html',
+  styleUrls: ['./password-reset-request.component.css']
 })
-export class SigninComponent implements OnInit {
+export class PasswordResetRequestComponent implements OnInit {
 
-  signinForm: UntypedFormGroup;
+  passwordReset: UntypedFormGroup;
 
   constructor(
     public fb: UntypedFormBuilder,
     public authService: AuthService,
     public router: Router
   ) {
-    this.signinForm = this.fb.group({
-      email: [''],
-      password: [''],
-    });
+    this.passwordReset = this.fb.group({
+      email: ['']
+    })
   }
 
   ngOnInit() {}
 
-  loginUser() {
-    this.authService.signIn(this.signinForm.value);
-  }
 
+  resetPassword(){
+    debugger;
+  }
 
 }

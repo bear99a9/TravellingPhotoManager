@@ -21,6 +21,8 @@ import { ErrorModalComponent } from './shared/error/error-modal/error-modal.comp
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     UploadFilesComponent,
     UploadFeaturedFilesComponent,
     ErrorModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PasswordResetComponent,
+    PasswordResetRequestComponent
   ],
   imports: [
     BrowserModule,
