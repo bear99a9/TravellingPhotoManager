@@ -20,7 +20,6 @@ import { UploadFeaturedFilesComponent } from './components/file-upload/upload-fe
 import { ErrorModalComponent } from './shared/error/error-modal/error-modal.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
 
@@ -48,7 +47,6 @@ import { PasswordResetRequestComponent } from './components/password-reset-reque
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    GoogleMapsModule
 
   ],
   providers: [
