@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class SigninComponent implements OnInit {
 
   signinForm: UntypedFormGroup;
+  showPassword: boolean = false;
 
   constructor(
     public fb: UntypedFormBuilder,
@@ -28,6 +29,11 @@ export class SigninComponent implements OnInit {
   loginUser() {
     this.authService.signIn(this.signinForm.value);
   }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
 
 
 }

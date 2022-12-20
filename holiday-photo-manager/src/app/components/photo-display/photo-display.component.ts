@@ -13,6 +13,10 @@ import { ErrorModalService } from 'src/app/services/error/error-modal.service';
 export class PhotoDisplayComponent implements OnInit {
 
   images: photoInterface[] = [];
+  allImages: photoInterface[] = [];
+
+  page = 0;
+  size = 25;
 
 
   constructor(private photoService: PhotoService,
@@ -30,11 +34,23 @@ export class PhotoDisplayComponent implements OnInit {
     }
   }
 
+  paginateData(obj: any) {
+    let index=0,
+        startingIndex=obj.pageIndex * obj.pageSize,
+        endingIndex=startingIndex + obj.pageSize;
+
+    this.images = this.allImages.filter(() => {
+      index++;
+      return (index > startingIndex && index <= endingIndex) ? true : false;
+    });
+  }
+
   loadAllImages(): void {
     this.photoService.FetchAllPhotos()
       .subscribe({
         next: (response: ServiceResponse) => {
-          this.images.push(...response.data);
+          this.allImages.push(...response.data);
+          this.paginateData({pageIndex: this.page, pageSize: this.size});
         },
         error: (error: any) => {
           this.errorModalService.show(error.message, error);
@@ -49,7 +65,8 @@ export class PhotoDisplayComponent implements OnInit {
     this.photoService.FetchFeaturedPhotos()
       .subscribe({
         next: (response: ServiceResponse) => {
-          this.images.push(...response.data);
+          this.allImages.push(...response.data);
+          this.paginateData({pageIndex: this.page, pageSize: this.size});
         },
         error: (error: any) => {
           this.errorModalService.show(error.message, error);
@@ -63,15 +80,19 @@ export class PhotoDisplayComponent implements OnInit {
   openModal() {
     document.getElementById('imgModal')!.style.display = "block";
   }
+
   closeModal() {
     document.getElementById('imgModal')!.style.display = "none";
   }
+
   plusSlides(n: any) {
     this.showSlides(this.slideIndex += n);
   }
+
   currentSlide(n: any) {
     this.showSlides(this.slideIndex = n);
   }
+
   showSlides(n: any) {
     let i;
     const slides = document.getElementsByClassName("img-slides") as HTMLCollectionOf<HTMLElement>;

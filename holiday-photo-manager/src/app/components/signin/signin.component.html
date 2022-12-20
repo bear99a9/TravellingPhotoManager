@@ -7,13 +7,19 @@
         </div>
         <div class="form-group col-md-4 mx-auto">
             <label>Password</label>
-            <input type="password" class="form-control" formControlName="password" placeholder="Password" />
-        </div>
+            <input [type]="showPassword ? 'text' : 'password'" name="password" class="form-control"
+                formControlName="password" placeholder="Password" />
+                <span>
+                    <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                        {{showPassword?'visibility_off':'visibility'}}
+                    </mat-icon>
+                </span>
+            </div>
         <button type="submit" class="btn btn-block btn-primary form-group col-md-4 mx-auto">Sign in</button>
     </form>
 
     <div class="reset-password--button">
-        <button type="button"  routerLink="/reset-password-request" class="btn btn-block btn-primary form-group col-md-2 mx-auto">Forgot your password</button>
+        <button type="button" routerLink="/reset-password-request"
+            class="btn btn-block btn-primary form-group col-md-2 mx-auto">Forgot your password</button>
     </div>
 </div>
-

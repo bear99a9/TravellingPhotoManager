@@ -1,3 +1,12 @@
+<div class="photo-container">
+    <mat-paginator [length]="allImages.length"
+[pageSize]="size"
+[pageIndex]="page"
+[pageSizeOptions]="[5, 10, 15, 25, 50, 100]"
+(page)="paginateData($event)">
+</mat-paginator>
+
+
 <div class="image-row">
     <div class="image-column" *ngFor="let image of images; let i = index">
         <img src="{{image.photoUrl}}" (click)="openModal();currentSlide(i+1)" class="hover-shadow cursor tn">
@@ -17,4 +26,5 @@
             </div>
         </div> -->
     </div>
+</div>
 </div>
