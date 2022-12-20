@@ -55,7 +55,6 @@ export class PasswordResetComponent implements OnInit {
       passwordResetKey: this.accessGuid
     }
 
-    debugger;
     this.authService.passwordReset(passwordReset);
   }
 

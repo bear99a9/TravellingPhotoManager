@@ -44,7 +44,6 @@ export class BaseService {
 
   public handleError(operation = 'operation') {
     return (error: HttpErrorResponse): Observable<any> => {
-      console.log(error.status);
       if (error.error && typeof error.error == "string") {
         throw {
           message: error.error,
