@@ -87,7 +87,7 @@ export class AuthService extends BaseService {
     .subscribe({
       next: (res: ServiceResponse) => {
         const title = res.success ? 'Email Reset Sent' : 'Email Not Found';
-        
+
         return this.errorModalService.show(res.message, res, title);
       },
       error: (error: any) => {
@@ -98,5 +98,29 @@ export class AuthService extends BaseService {
     });
 
   }
+
+  passwordReset(passwordReset: any){
+    this.http
+    .post<ServiceResponse>(`${this.apiUrl}auth/reset-password`, passwordReset, this.prepareOptions()).pipe(
+      map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
+      catchError(
+        this.handleError()
+      ))
+    .subscribe({
+      next: (res: ServiceResponse) => {
+        const title = res.success ? 'Email Reset' : 'Link Expired';
+
+        this.errorModalService.show(res.message, res, title);
+        this.router.navigate(['log-in']);
+      },
+      error: (error: any) => {
+        this.errorModalService.show(error.message, error);
+      },
+      complete() {
+      }
+    });
+
+  }
+
 
 }
