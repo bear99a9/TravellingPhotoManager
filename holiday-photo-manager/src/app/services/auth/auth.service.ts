@@ -86,7 +86,7 @@ export class AuthService extends BaseService {
       ))
     .subscribe({
       next: (res: ServiceResponse) => {
-        this.errorModalService.show(res.message, res);
+        return this.errorModalService.show(res.message, res, "Email Reset");
       },
       error: (error: any) => {
         this.errorModalService.show(error.message, error);
