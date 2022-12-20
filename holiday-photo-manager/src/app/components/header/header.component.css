@@ -8,4 +8,8 @@
         border-radius: 50%;
     }
 
+    .l-header__logo:hover {
+        cursor: pointer;
+    }
+
 
