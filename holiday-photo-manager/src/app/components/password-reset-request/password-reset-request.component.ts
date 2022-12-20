@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserRequestPasswordReset } from '../../shared/models/UserRequestPasswordReset.model';
 
 @Component({
   selector: 'app-password-reset-request',
@@ -26,7 +27,7 @@ export class PasswordResetRequestComponent implements OnInit {
 
 
   resetPassword(){
-    debugger;
+    this.authService.requestPasswordReset(this.passwordReset.value)
   }
 
 }

@@ -8,6 +8,7 @@ import { PhotoDisplayComponent } from './components/photo-display/photo-display.
 import { ApiDocumentationComponent } from './components/api-documentation/api-documentation.component';
 import { LoginGuard } from './shared/guards/login.guard';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
 
 const routes: Routes = [
 { path: 'log-in', component: SigninComponent, canActivate: [LoginGuard] },
@@ -17,7 +18,7 @@ const routes: Routes = [
 {path: 'photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
 {path: 'swagger', component: ApiDocumentationComponent, canActivate: [AuthGuard]},
 { path: 'reset-password/:accessGuid', component: PasswordResetComponent },
-{ path: 'reset-password-request', component: PasswordResetComponent },
+{ path: 'reset-password-request', component: PasswordResetRequestComponent },
 { path: '**', redirectTo: 'log-in'}];
 
 @NgModule({

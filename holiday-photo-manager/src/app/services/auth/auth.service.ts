@@ -10,6 +10,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { UserService } from '../user/user.service';
 import { ErrorModalService } from '../error/error-modal.service';
 import { Subject } from 'rxjs';
+import { UserRequestPasswordReset } from '../../shared/models/UserRequestPasswordReset.model';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,26 @@ export class AuthService extends BaseService {
       this.loggedIn.next(false);
       this.router.navigate(['log-in']);
     }
+  }
+
+  requestPasswordReset(userRequestPasswordReset: UserRequestPasswordReset){
+    this.http
+    .post<ServiceResponse>(`${this.apiUrl}auth/password-reset-request`, userRequestPasswordReset, this.prepareOptions()).pipe(
+      map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
+      catchError(
+        this.handleError()
+      ))
+    .subscribe({
+      next: (res: ServiceResponse) => {
+        this.errorModalService.show(res.message, res);
+      },
+      error: (error: any) => {
+        this.errorModalService.show(error.message, error);
+      },
+      complete() {
+      }
+    });
+
   }
 
 }
