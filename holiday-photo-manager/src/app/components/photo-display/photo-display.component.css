@@ -46,8 +46,8 @@ img {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    max-height: 800px;
-    margin: 100px;
+    max-height: 500px;
+    margin: auto;
     padding: 0;
 }
 
