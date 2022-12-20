@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserRequestPasswordReset } from '../../shared/models/UserRequestPasswordReset.model';
@@ -19,7 +19,7 @@ export class PasswordResetRequestComponent implements OnInit {
     public router: Router
   ) {
     this.passwordReset = this.fb.group({
-      email: ['']
+      email: ['', [Validators.required, Validators.email]]
     })
   }
 
