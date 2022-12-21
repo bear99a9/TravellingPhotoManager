@@ -14,6 +14,7 @@ export class PasswordResetComponent implements OnInit {
   passwordForm: FormGroup;
   accessGuid: string = "";
   showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     public fb: FormBuilder,
@@ -28,7 +29,7 @@ export class PasswordResetComponent implements OnInit {
       CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
       CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
       Validators.minLength(8),
-      CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, { hasSpecialCharacters: true })])),
+      CustomValidators.patternValidator(/[ !@#$%^£&*()_+\-=\[\]{};':"\\|,.<>\/?]/, { hasSpecialCharacters: true })])),
       confirmPassword: fb.control('', [Validators.required]),
     },
       {
@@ -61,6 +62,11 @@ export class PasswordResetComponent implements OnInit {
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
+
+  toggleConfirmPasswordVisibility(): void {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
 
 
 }
