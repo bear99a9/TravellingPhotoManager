@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CustomValidators } from 'src/app/shared/validators/custom-validators';
@@ -13,6 +13,7 @@ export class PasswordResetComponent implements OnInit {
 
   passwordForm: FormGroup;
   accessGuid: string = "";
+  showPassword: boolean = false;
 
   constructor(
     public fb: FormBuilder,
@@ -57,30 +58,9 @@ export class PasswordResetComponent implements OnInit {
 
     this.authService.passwordReset(passwordReset);
   }
-
-  matchValidator(
-    control: AbstractControl,
-    controlTwo: AbstractControl
-  ): ValidatorFn {
-    return () => {
-      if (control.value !== controlTwo.value)
-        return { match_error: 'Value does not match' };
-      return null;
-    };
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
-  patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
-    return (control: AbstractControl) => {
-      if (!control.value) {
-        // if control is empty return no error
-        return null;
-      }
 
-      // test the value of the control against the regexp supplied
-      const valid = regex.test(control.value);
-
-      // if true, return no error (no error), else return error passed in the second parameter
-      return valid ? null : error;
-    };
-  }
 }

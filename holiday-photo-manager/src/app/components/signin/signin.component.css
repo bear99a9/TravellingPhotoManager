@@ -15,3 +15,13 @@
 .reset-password--button {
     margin-top: 35px;
 }
+
+.password-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-visibility-icon {
+    margin-left: 15px;
+}
