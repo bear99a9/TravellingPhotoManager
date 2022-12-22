@@ -22,6 +22,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMapComponent } from './components/google-map/google-map.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { PasswordResetRequestComponent } from './components/password-reset-reque
     ErrorModalComponent,
     SpinnerComponent,
     PasswordResetComponent,
-    PasswordResetRequestComponent
+    PasswordResetRequestComponent,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { PasswordResetRequestComponent } from './components/password-reset-reque
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    GoogleMapsModule
 
   ],
   providers: [
