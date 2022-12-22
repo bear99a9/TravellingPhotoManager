@@ -9,6 +9,7 @@ import { ApiDocumentationComponent } from './components/api-documentation/api-do
 import { LoginGuard } from './shared/guards/login.guard';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 const routes: Routes = [
 { path: 'log-in', component: SigninComponent, canActivate: [LoginGuard] },
@@ -17,6 +18,7 @@ const routes: Routes = [
 {path: 'manage-photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
 {path: 'photos', component: PhotoDisplayComponent, canActivate: [AuthGuard]},
 {path: 'swagger', component: ApiDocumentationComponent, canActivate: [AuthGuard]},
+{path: 'map', component: GoogleMapComponent, canActivate: [AuthGuard]},
 { path: 'reset-password/:accessGuid', component: PasswordResetComponent },
 { path: 'reset-password-request', component: PasswordResetRequestComponent },
 { path: '**', redirectTo: 'log-in'}];
