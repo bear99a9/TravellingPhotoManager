@@ -44,13 +44,17 @@ export class GoogleMapComponent implements OnInit {
   }
 
   loadImagesCoOrdinates(): void {
+    debugger;
     this.photoService.FetchPhotosCoOrdinates()
       .subscribe({
         next: (response: ServiceResponse) => {
+          debugger;
           this.addMarkers(response.data);
+          debugger;
           if (this.markers.length > 0) {
             const last = response.data.length - 1;
             this.center = response.data[last];
+            debugger;
           }
         },
         error: (error: any) => {
