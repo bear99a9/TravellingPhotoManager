@@ -11,6 +11,13 @@
     /* font-family: 'Source Sans Pro', arial, sans-serif; */
 }
 
+@media (max-width: 480px){
+    .l-footer { 
+        display : none; 
+        visibility : hidden; 
+    }
+}
+
 .l-footer__logo {
     font-size: 12px;
     margin: 5px 15px 5px 5px;

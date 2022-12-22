@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class BaseService {
 
 
   public processResponse(data: any) {
+    debugger;
     if (data.status === 299) {
       throw {
         message: data.body,
@@ -32,6 +34,7 @@ export class BaseService {
         isValidationError: true
       };
     } else if (data.name && data.name == "HttpErrorResponse") {
+      debugger;
       throw {
         message: data.body,
         status: data.status,
@@ -44,6 +47,7 @@ export class BaseService {
 
   public handleError(operation = 'operation') {
     return (error: HttpErrorResponse): Observable<any> => {
+      debugger;
       if (error.error && typeof error.error == "string") {
         throw {
           message: error.error,
@@ -60,9 +64,16 @@ export class BaseService {
           status: error.status,
           isValidationError: true
         };
-      }else if (error.status === 400) {
+      } else if (error.status === 400) {
         throw {
           message: "Please enter the correct email and password combination",
+          status: error.status,
+          isValidationError: true
+        };
+      } else if (error.status === 0) {
+        debugger;
+        throw {
+          message: "Please log in again",
           status: error.status,
           isValidationError: true
         };

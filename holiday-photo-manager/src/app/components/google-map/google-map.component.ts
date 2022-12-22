@@ -54,7 +54,9 @@ export class GoogleMapComponent implements OnInit {
           }
         },
         error: (error: any) => {
-          this.errorModalService.show(error.message, error);
+          if(error.status !== 0){
+            this.errorModalService.show(error.message, error);
+          }
         },
         complete() {
 

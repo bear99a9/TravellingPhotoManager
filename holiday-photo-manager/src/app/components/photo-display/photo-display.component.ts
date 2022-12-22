@@ -53,7 +53,9 @@ export class PhotoDisplayComponent implements OnInit {
           this.paginateData({pageIndex: this.page, pageSize: this.size});
         },
         error: (error: any) => {
-          this.errorModalService.show(error.message, error);
+          if(error.status !== 0){
+            this.errorModalService.show(error.message, error);
+          }
         },
         complete() {
   
@@ -69,7 +71,9 @@ export class PhotoDisplayComponent implements OnInit {
           this.paginateData({pageIndex: this.page, pageSize: this.size});
         },
         error: (error: any) => {
-          this.errorModalService.show(error.message, error);
+          if(error.status !== 0){
+            this.errorModalService.show(error.message, error);
+          }
         },
         complete() {
   

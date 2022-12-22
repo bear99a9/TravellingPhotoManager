@@ -39,7 +39,9 @@ export class UploadFilesComponent implements OnInit {
 					this.urls.push(...response.data);
 				},
 				error: (error: any) => {
-					this.errorModalService.show(error.message, error);
+					if (error.status !== 0) {
+						this.errorModalService.show(error.message, error);
+					}
 				},
 				complete() {
 

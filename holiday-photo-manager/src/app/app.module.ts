@@ -24,6 +24,7 @@ import { PasswordResetComponent } from './components/password-reset/password-res
 import { PasswordResetRequestComponent } from './components/password-reset-request/password-reset-request.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapComponent } from './components/google-map/google-map.component'
+import { expiredJWTInterceptor } from './shared/interceptors/expired-jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,11 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: expiredJWTInterceptor,
       multi: true
     }
   ],

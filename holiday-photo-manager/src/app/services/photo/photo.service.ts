@@ -37,15 +37,20 @@ export class PhotoService extends BaseService {
 
   public FetchFeaturedPhotos(){
     return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-featured-images', this.prepareFormOptions() ).pipe(
-      map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
+      map((data: any) => this.processResponse(data)),
       catchError(this.handleError()
     ));
   }
 
   public FetchPhotosCoOrdinates(){
+    debugger;
     return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-images-co-ordinates', this.prepareFormOptions() ).pipe(
-      map((data: HttpEvent<ServiceResponse>) => this.processResponse(data)),
-      catchError(this.handleError()
+      map((data: any) => { 
+        debugger;
+        this.processResponse(data);
+      }),
+      catchError(
+        this.handleError()
     ));
   }
 
