@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ErrorModalService } from 'src/app/services/error/error-modal.service';
+import { PhotoService } from 'src/app/services/photo/photo.service';
+import { PhotoCoOrdinates } from 'src/app/shared/models/photo-co-ordinates.model';
+import ServiceResponse from 'src/app/shared/models/service-response.interface';
 
 @Component({
   selector: 'app-google-map',
   templateUrl: './google-map.component.html',
   styleUrls: ['./google-map.component.css']
 })
-export class GoogleMapComponent implements OnInit{
+export class GoogleMapComponent implements OnInit {
 
-  zoom = 4;
+  zoom = 3;
   center!: google.maps.LatLngLiteral;
   markers: any = [];
 
@@ -16,9 +20,12 @@ export class GoogleMapComponent implements OnInit{
     zoomControl: true,
     scrollwheel: false,
     disableDoubleClickZoom: true,
-    maxZoom: 15,
+    maxZoom: 20,
     minZoom: 3,
   };
+
+  constructor(private photoService: PhotoService,
+    private errorModalService: ErrorModalService) { }
 
   ngOnInit() {
     // navigator.geolocation.getCurrentPosition((position) => {
@@ -32,33 +39,36 @@ export class GoogleMapComponent implements OnInit{
       lat: -25.2637399,
       lng: -57.57592599999998
     };
-  }
-  
-  zoomIn() {
-    if (this.zoom < this.options.maxZoom!) this.zoom++;
-  }
-  zoomOut() {
-    if (this.zoom > this.options.minZoom!) this.zoom--;
+
+    this.loadImagesCoOrdinates();
   }
 
-  click(event: google.maps.MapMouseEvent) {
-    console.log(event);
-    this.addMarker(event);
+  loadImagesCoOrdinates(): void {
+    this.photoService.FetchPhotosCoOrdinates()
+      .subscribe({
+        next: (response: ServiceResponse) => {
+          this.addMarkers(response.data);
+          if (this.markers.length > 0) {
+            const last = response.data.length - 1;
+            this.center = response.data[last];
+          }
+        },
+        error: (error: any) => {
+          this.errorModalService.show(error.message, error);
+        },
+        complete() {
+
+        },
+      });
   }
 
-  addMarker(event: google.maps.MapMouseEvent) {
-    let wtf = event.latLng?.toJSON();
-    console.log(wtf);
-    this.markers.push({
-      position: event.latLng?.toJSON(),
-      label: {
-        color: 'red',
-        // text: 'Marker label ' + (this.markers.length + 1),
-      },
-      // title: 'Marker title ' + (this.markers.length + 1),
-      // info: 'Marker info ' + (this.markers.length + 1),
-      options: {
-      },
+  addMarkers(markers: PhotoCoOrdinates[]) {
+
+    markers.forEach((latLng: PhotoCoOrdinates) => {
+      this.markers.push({
+        position: latLng,
+      });
     });
   }
+
 }
