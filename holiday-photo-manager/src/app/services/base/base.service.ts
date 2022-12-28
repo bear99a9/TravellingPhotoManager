@@ -67,12 +67,6 @@ export class BaseService {
           status: error.status,
           isValidationError: true
         };
-      } else if (error.status === 0) {
-        throw {
-          message: "Please log in again",
-          status: error.status,
-          isValidationError: true
-        };
       } else {
         throw {
           message: "Oops, an error has occurred. Looks like I did not do a good job there!",

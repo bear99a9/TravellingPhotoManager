@@ -44,8 +44,9 @@ export class PhotoService extends BaseService {
 
   public FetchPhotosCoOrdinates(){
     return this.httpClient.get<ServiceResponse>(this.apiUrl + 'photo/retrieve-images-co-ordinates', this.prepareFormOptions() ).pipe(
-      map((data: HttpEvent<ServiceResponse>) => { 
-        this.processResponse(data);
+      map((data: any) => { 
+        var result = this.processResponse(data);
+        return result;    
       }),
       catchError(
         this.handleError()

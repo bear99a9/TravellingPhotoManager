@@ -20,7 +20,7 @@
                 <br/>
                 <p class="modal-message-body" *ngIf="!data.isAuthFailedInfoError">{{data.errorMessage}}</p>
                 <p class="modal-message-body" *ngIf="data.isAuthFailedInfoError">You currently do not have permission to enter the application.</p>
-                <p class="modal-message-body" *ngIf="data.isAuthFailedInfoError">Please return back to your learning platform to create a new access link.</p>
+                <p class="modal-message-body" *ngIf="data.isAuthFailedInfoError">Please log in.</p>
             
                 <div class="modal-button-container">
                     <button [mat-dialog-close]="false" class="btn btn-danger"

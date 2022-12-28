@@ -1,4 +1,8 @@
-<div class="photo-container">
+<div class="no-photo"*ngIf="images.length === 0">
+    No photos have been uploaded yet.
+</div>
+
+<div *ngIf="images.length !== 0" class="photo-container">
     <mat-paginator [length]="allImages.length"
 [pageSize]="size"
 [pageIndex]="page"

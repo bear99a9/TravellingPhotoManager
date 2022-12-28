@@ -18,7 +18,7 @@ export class expiredJWTInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(
             catchError((err) => {
-                if (err.status === 401 || err.status === 0) {
+                if (err.status === 401) {
                     this.authService.doLogout();
                     this.router.navigate(['']);
                 }
