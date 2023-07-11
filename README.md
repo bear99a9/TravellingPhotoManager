@@ -1,1 +1,1 @@
-# HolidayPhotoManager
+# PhotoManager
